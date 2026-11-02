@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { Products, PageHeader, Quote } from "@/components/site/Sections";
 
-const t = "Products — Recycled Granules, Carry Bags & Polymers | EcoPoly Industries";
+const t = "Products — Recycled Granules, Carry Bags & Polymers | SRI KRISHNA PLASTIC";
 const d = "Browse recycled HDPE, LDPE and PP granules, carry bags, plastic covers and polymer raw materials. Request pricing.";
 
 export const Route = createFileRoute("/products")({

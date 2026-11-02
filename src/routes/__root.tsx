@@ -81,9 +81,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "EcoPoly Industries — Plastic Recycling & Polymer Materials" },
+      { title: "SRI KRISHNA PLASTIC — Plastic Recycling & Polymer Materials" },
       { name: "description", content: "Recycled plastic granules, carry bags, plastic covers and polymer raw materials." },
-      { property: "og:title", content: "EcoPoly Industries" },
+      { property: "og:title", content: "SRI KRISHNA PLASTIC" },
       { property: "og:description", content: "Recycled plastic granules, carry bags, plastic covers and polymer raw materials." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
