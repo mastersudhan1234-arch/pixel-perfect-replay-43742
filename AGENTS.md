@@ -12,3 +12,4 @@
 ## Project rules
 - Business details, products and contact placeholders live in src/lib/site.ts; edit there so all pages update together.
 - Page sections are shared components in src/components/site/Sections.tsx; the enquiry form posts through the submitEnquiry stub in QuoteForm.tsx, which is where a backend gets plugged in later.
+- The map embed must pick its URL at runtime from the current host: use the referrer-restricted browser key only on hosts Google has authorized for it, and a keyless embed everywhere else, so no page ever renders Google's key-authorization error.
