@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Recycle, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Menu, X, Recycle, Mail, Phone, MapPin, MessageCircle, Navigation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site, categories, whatsappLink } from "@/lib/site";
 
@@ -96,10 +96,11 @@ export function Footer() {
         <div>
           <h3 className="mb-4 font-bold text-lime">Contact</h3>
           <ul className="space-y-3 text-sm text-forest-foreground/75">
-            <li className="flex gap-2"><MapPin className="mt-0.5 size-4 shrink-0" />{c.address}</li>
+            <li className="flex gap-2"><MapPin className="mt-0.5 size-4 shrink-0" /><address className="not-italic leading-relaxed">{c.address}</address></li>
             <li className="flex gap-2"><Phone className="size-4" /><a href={`tel:${c.phone}`}>{c.phone}</a></li>
             <li className="flex gap-2"><Mail className="size-4" /><a href={`mailto:${c.email}`}>{c.email}</a></li>
             <li className="flex gap-2"><MessageCircle className="size-4" /><a href={whatsappLink()} target="_blank" rel="noreferrer">WhatsApp us</a></li>
+            <li className="flex gap-2"><Navigation className="mt-0.5 size-4 shrink-0" /><a href={c.directions} target="_blank" rel="noreferrer" className="font-semibold text-lime hover:text-foreground">Get Directions</a></li>
           </ul>
         </div>
       </div>

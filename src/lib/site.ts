@@ -3,18 +3,34 @@ import granules from "@/assets/machine-recycling-extruder.jpg";
 import bags from "@/assets/machine-bag-making.jpg";
 import resin from "@/assets/machine-film-roll.jpg";
 
+// Referrer-restricted Maps browser key (safe for embeds). Keyless embed is used if it is absent.
+const MAPS_BROWSER_KEY = import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY"] as string | undefined;
+
+// Exact pin for the business address: X2HC+54R, Katrambakkam, Sriperumbudur (geocoded).
+const COMPANY_LOCATION = { lat: 12.9779875, lng: 80.0202656 };
+const COMPANY_ADDRESS = "X2HC+54R, Katrambakkam, Sriperumbudur, Tamil Nadu 602117, India";
+
+const mapEmbedUrl = MAPS_BROWSER_KEY
+  ? `https://www.google.com/maps/embed/v1/place?key=${MAPS_BROWSER_KEY}&q=${COMPANY_LOCATION.lat},${COMPANY_LOCATION.lng}&zoom=17`
+  : `https://maps.google.com/maps?q=${COMPANY_LOCATION.lat},${COMPANY_LOCATION.lng}&z=17&output=embed`;
+
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${COMPANY_LOCATION.lat},${COMPANY_LOCATION.lng}&travelmode=driving`;
+
 export const site = {
   name: "EcoPoly Industries",
   tagline: "Plastic recycling, packaging & polymer materials",
   description:
     "EcoPoly Industries supplies recycled plastic granules, carry bags, plastic covers and polymer raw materials for manufacturers and wholesalers.",
   contact: {
-    address: "[Placeholder] Plot 00, Industrial Estate, Your City, State 000000",
+    address: COMPANY_ADDRESS,
+    addressLines: ["X2HC+54R", "Katrambakkam, Sriperumbudur", "Tamil Nadu 602117, India"],
+    location: COMPANY_LOCATION,
     phone: "+00 00000 00000",
     whatsapp: "000000000000", // digits only, with country code
     email: "hello@example.com",
     hours: "Mon – Sat, 9:00 AM – 6:00 PM",
-    mapEmbed: "https://www.google.com/maps?q=industrial+estate&output=embed",
+    mapEmbed: mapEmbedUrl,
+    directions: directionsUrl,
   },
   social: [
     { label: "LinkedIn", href: "#" },

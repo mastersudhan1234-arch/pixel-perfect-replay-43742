@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import {
   ArrowRight, Truck, Filter, Droplets, Scissors, CircleDot, ShieldCheck, Factory, Package, Store, Boxes, Cog,
-  Leaf, SlidersHorizontal, Handshake, HeartHandshake, Award, Target, Eye, History, Briefcase, Phone, Mail, MapPin, Clock, MessageCircle,
+  Leaf, SlidersHorizontal, Handshake, HeartHandshake, Award, Target, Eye, History, Briefcase, Phone, Mail, MapPin, Clock, MessageCircle, Navigation,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import hero from "@/assets/machine-film-extrusion.jpg";
@@ -274,7 +274,6 @@ export function Quote({ product }: { product?: string | undefined }) {
 export function Contact() {
   const c = site.contact;
   const items = [
-    { icon: MapPin, label: "Address", value: c.address },
     { icon: Phone, label: "Phone", value: c.phone, href: `tel:${c.phone}` },
     { icon: MessageCircle, label: "WhatsApp", value: `+${c.whatsapp}`, href: whatsappLink() },
     { icon: Mail, label: "Email", value: c.email, href: `mailto:${c.email}` },
@@ -283,20 +282,45 @@ export function Contact() {
   return (
     <section className="bg-secondary/60 py-24">
       <div className="container-x">
-        <SectionHead eyebrow="Contact" title="Visit or reach us." text="All details below are placeholders — replace them with your real business information." />
+        <SectionHead eyebrow="Contact" title="Visit or reach us." text="Come to our facility in Sriperumbudur, or send an enquiry and our team will respond with pricing and availability." />
         <div className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
-          <ul className="space-y-3">
-            {items.map((i) => (
-              <li key={i.label} className="flex gap-4 rounded-2xl bg-card p-5 shadow-soft">
-                <i.icon className="mt-0.5 size-5 shrink-0 text-emerald" />
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">{i.label}</p>
-                  {i.href ? <a href={i.href} className="font-semibold text-forest hover:text-emerald">{i.value}</a> : <p className="font-semibold text-forest">{i.value}</p>}
+          <div className="flex flex-col gap-3">
+            <div className="rounded-2xl bg-card p-5 shadow-soft sm:p-6">
+              <div className="flex gap-4">
+                <MapPin className="mt-0.5 size-5 shrink-0 text-emerald" />
+                <div className="min-w-0">
+                  <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Company Address</p>
+                  <address className="mt-1.5 font-semibold not-italic leading-relaxed text-forest">
+                    {c.addressLines.map((line) => <span key={line} className="block">{line}</span>)}
+                  </address>
                 </div>
-              </li>
-            ))}
-          </ul>
-          <iframe title="Map location (placeholder)" src={c.mapEmbed} loading="lazy" className="min-h-96 w-full rounded-3xl border-0 shadow-soft" />
+              </div>
+              <Button asChild variant="forest" size="lg" className="mt-5 w-full sm:w-auto sm:px-7">
+                <a href={c.directions} target="_blank" rel="noreferrer"><Navigation /> Get Directions</a>
+              </Button>
+            </div>
+            <ul className="flex flex-col gap-3">
+              {items.map((i) => (
+                <li key={i.label} className="flex gap-4 rounded-2xl bg-card p-5 shadow-soft">
+                  <i.icon className="mt-0.5 size-5 shrink-0 text-emerald" />
+                  <div className="min-w-0">
+                    <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">{i.label}</p>
+                    {i.href ? <a href={i.href} className="font-semibold break-words text-forest hover:text-emerald">{i.value}</a> : <p className="font-semibold text-forest">{i.value}</p>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="overflow-hidden rounded-3xl shadow-soft">
+            <iframe
+              title={`Google Map showing ${site.name} at ${c.address}`}
+              src={c.mapEmbed}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="h-80 w-full border-0 sm:h-[26rem] lg:h-full lg:min-h-[30rem]"
+            />
+          </div>
         </div>
       </div>
     </section>
