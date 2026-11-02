@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Hero, About, Products, Recycling, Industries, WhyUs, Quote, Contact } from "@/components/site/Sections";
+import { Hero, About, Products, Recycling, Facilities, Industries, WhyUs, Quote, Contact } from "@/components/site/Sections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -14,5 +14,5 @@ export const Route = createFileRoute("/")({
 });
 
 function Page() {
-  return <main><Hero /><About /><Products limit={8} /><Recycling /><Industries /><WhyUs /><Quote /><Contact /></main>;
+  return <main><Hero /><About /><Products limit={8} /><Recycling /><Facilities /><Industries /><WhyUs /><Quote /><Contact /></main>;
 }
