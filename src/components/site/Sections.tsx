@@ -168,6 +168,36 @@ export function Recycling() {
             </li>
           ))}
         </ol>
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
+          <img src={extruder} alt="Recycling extruder pelletising cleaned plastic flakes into uniform granules" loading="lazy" width={1024} height={768} className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lift" />
+          <img src={facility} alt="EcoPoly Industries recycling hall with sorting conveyors and granule production equipment" loading="lazy" width={1536} height={768} className="aspect-[4/3] w-full rounded-3xl object-cover shadow-lift" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const facilityShots = [
+  { src: hero, alt: "Blown-film extrusion machine producing transparent polyethylene film", label: "Film Extrusion Line", w: 1920, h: 1088, wide: true },
+  { src: bagMachine, alt: "Plastic bag making machine cutting and sealing carry bags", label: "Bag Making Line", w: 1024, h: 768, wide: false },
+  { src: extruder, alt: "Recycling extruder producing recycled plastic granules", label: "Recycling Extruder", w: 1024, h: 768, wide: false },
+  { src: filmRoll, alt: "Film winding machine producing large polyethylene film rolls", label: "Film Winding & Rolls", w: 1024, h: 768, wide: false },
+  { src: facility, alt: "Wide view of the recycling facility floor with conveyors and extrusion lines", label: "Recycling Facility", w: 1536, h: 768, wide: false },
+];
+
+export function Facilities() {
+  return (
+    <section className="py-24">
+      <div className="container-x">
+        <SectionHead eyebrow="Manufacturing Facilities" title="Inside our production floor." text="A look at the machinery behind our films, bags, covers and recycled granules." />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {facilityShots.map((f) => (
+            <figure key={f.label} className={`group relative overflow-hidden rounded-3xl shadow-soft transition-shadow hover:shadow-lift ${f.wide ? "sm:col-span-2" : ""}`}>
+              <img src={f.src} alt={f.alt} loading="lazy" width={f.w} height={f.h} className="aspect-[4/3] size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest/90 to-transparent p-5 pt-12 text-sm font-bold text-forest-foreground">{f.label}</figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   );
