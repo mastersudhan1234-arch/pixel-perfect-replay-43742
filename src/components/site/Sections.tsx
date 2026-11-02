@@ -5,7 +5,11 @@ import {
   Leaf, SlidersHorizontal, Handshake, HeartHandshake, Award, Target, Eye, History, Briefcase, Phone, Mail, MapPin, Clock, MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import hero from "@/assets/hero-facility.jpg";
+import hero from "@/assets/machine-film-extrusion.jpg";
+import facility from "@/assets/facility-recycling-wide.jpg";
+import extruder from "@/assets/machine-recycling-extruder.jpg";
+import bagMachine from "@/assets/machine-bag-making.jpg";
+import filmRoll from "@/assets/machine-film-roll.jpg";
 import { categories, products, productImage, site, whatsappLink, type Category } from "@/lib/site";
 import { QuoteForm } from "./QuoteForm";
 

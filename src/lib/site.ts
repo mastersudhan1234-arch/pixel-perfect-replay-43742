@@ -1,7 +1,7 @@
 // Central, editable business configuration. Replace placeholders with real details.
-import granules from "@/assets/product-granules.jpg";
-import bags from "@/assets/product-bags.jpg";
-import resin from "@/assets/product-resin.jpg";
+import granules from "@/assets/machine-recycling-extruder.jpg";
+import bags from "@/assets/machine-bag-making.jpg";
+import resin from "@/assets/machine-film-roll.jpg";
 
 export const site = {
   name: "EcoPoly Industries",
