@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { CheckCircle2, Loader2 } from "lucide-react";
@@ -22,6 +22,16 @@ async function submitEnquiry(_data: Enquiry) {
 }
 
 const field = "mt-1.5 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-emerald focus:ring-2 focus:ring-ring/30";
+
+function Field({ label, children, error }: { name: keyof Enquiry; label: string; children: ReactNode; error?: string }) {
+  return (
+    <label className="block text-sm font-semibold text-forest">
+      {label}
+      {children}
+      {error && <span className="mt-1 block text-xs font-medium text-destructive">{error}</span>}
+    </label>
+  );
+}
 
 export function QuoteForm({ defaultProduct = "" }: { defaultProduct?: string }) {
   const [errors, setErrors] = useState<Partial<Record<keyof Enquiry, string>>>({});
@@ -61,29 +71,21 @@ export function QuoteForm({ defaultProduct = "" }: { defaultProduct?: string }) 
       </div>
     );
 
-  const F = ({ name, label, children }: { name: keyof Enquiry; label: string; children: React.ReactNode }) => (
-    <label className="block text-sm font-semibold text-forest">
-      {label}
-      {children}
-      {errors[name] && <span className="mt-1 block text-xs font-medium text-destructive">{errors[name]}</span>}
-    </label>
-  );
-
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-5 sm:grid-cols-2">
-      <F name="name" label="Your name *"><input name="name" className={field} autoComplete="name" aria-invalid={!!errors.name} /></F>
-      <F name="company" label="Company name"><input name="company" className={field} autoComplete="organization" /></F>
-      <F name="email" label="Email *"><input name="email" type="email" className={field} autoComplete="email" aria-invalid={!!errors.email} /></F>
-      <F name="phone" label="Phone number *"><input name="phone" type="tel" className={field} autoComplete="tel" aria-invalid={!!errors.phone} /></F>
-      <F name="product" label="Product *">
+      <Field name="name" error={errors.name} label="Your name *"><input name="name" className={field} autoComplete="name" aria-invalid={!!errors.name} /></Field>
+      <Field name="company" error={errors.company} label="Company name"><input name="company" className={field} autoComplete="organization" /></Field>
+      <Field name="email" error={errors.email} label="Email *"><input name="email" type="email" className={field} autoComplete="email" aria-invalid={!!errors.email} /></Field>
+      <Field name="phone" error={errors.phone} label="Phone number *"><input name="phone" type="tel" className={field} autoComplete="tel" aria-invalid={!!errors.phone} /></Field>
+      <Field name="product" error={errors.product} label="Product *">
         <select name="product" defaultValue={defaultProduct} className={field} aria-invalid={!!errors.product}>
           <option value="">Select a product</option>
           {products.map((p) => <option key={p.name}>{p.name}</option>)}
           <option>Other / Multiple</option>
         </select>
-      </F>
-      <F name="quantity" label="Required quantity *"><input name="quantity" placeholder="e.g. 5 tonnes / 10,000 pcs" className={field} aria-invalid={!!errors.quantity} /></F>
-      <div className="sm:col-span-2"><F name="message" label="Message"><textarea name="message" rows={4} className={field} placeholder="Specifications, delivery location, timelines…" /></F></div>
+      </Field>
+      <Field name="quantity" error={errors.quantity} label="Required quantity *"><input name="quantity" placeholder="e.g. 5 tonnes / 10,000 pcs" className={field} aria-invalid={!!errors.quantity} /></Field>
+      <div className="sm:col-span-2"><Field name="message" error={errors.message} label="Message"><textarea name="message" rows={4} className={field} placeholder="Specifications, delivery location, timelines…" /></Field></div>
       <div className="sm:col-span-2">
         <Button type="submit" variant="forest" size="xl" className="w-full sm:w-auto" disabled={status === "sending"}>
           {status === "sending" && <Loader2 className="animate-spin" />} Submit Enquiry
