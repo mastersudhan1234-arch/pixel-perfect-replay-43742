@@ -222,7 +222,7 @@ export function WhyUs() {
   );
 }
 
-export function Quote({ product }: { product?: string }) {
+export function Quote({ product }: { product?: string | undefined }) {
   return (
     <section id="quote" className="py-24">
       <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.5fr]">

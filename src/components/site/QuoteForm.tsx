@@ -33,7 +33,7 @@ function Field({ label, children, error }: { name: keyof Enquiry; label: string;
   );
 }
 
-export function QuoteForm({ defaultProduct = "" }: { defaultProduct?: string }) {
+export function QuoteForm({ defaultProduct = "" }: { defaultProduct?: string | undefined }) {
   const [errors, setErrors] = useState<Partial<Record<keyof Enquiry, string>>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
 
