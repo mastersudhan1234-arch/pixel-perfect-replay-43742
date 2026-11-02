@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   ArrowRight, Truck, Filter, Droplets, Scissors, CircleDot, ShieldCheck, Factory, Package, Store, Boxes, Cog,
   Leaf, SlidersHorizontal, Handshake, HeartHandshake, Award, Target, Eye, History, Briefcase, Phone, Mail, MapPin, Clock, MessageCircle, Navigation,
@@ -10,7 +10,7 @@ import facility from "@/assets/facility-recycling-wide.jpg";
 import extruder from "@/assets/machine-recycling-extruder.jpg";
 import bagMachine from "@/assets/machine-bag-making.jpg";
 import filmRoll from "@/assets/machine-film-roll.jpg";
-import { categories, products, productImage, site, whatsappLink, type Category } from "@/lib/site";
+import { categories, products, productImage, resolveMapEmbed, site, whatsappLink, type Category } from "@/lib/site";
 import { QuoteForm } from "./QuoteForm";
 
 export function SectionHead({ eyebrow, title, text, center }: { eyebrow: string; title: ReactNode; text?: string; center?: boolean }) {
@@ -273,6 +273,8 @@ export function Quote({ product }: { product?: string | undefined }) {
 
 export function Contact() {
   const c = site.contact;
+  const [mapSrc, setMapSrc] = useState(c.mapEmbed);
+  useEffect(() => { setMapSrc(resolveMapEmbed()); }, []);
   const items = [
     { icon: Phone, label: "Phone", value: c.phone, href: `tel:${c.phone}` },
     { icon: MessageCircle, label: "WhatsApp", value: `+${c.whatsapp}`, href: whatsappLink() },
@@ -314,7 +316,7 @@ export function Contact() {
           <div className="overflow-hidden rounded-3xl shadow-soft">
             <iframe
               title={`Google Map showing ${site.name} at ${c.address}`}
-              src={c.mapEmbed}
+              src={mapSrc}
               loading="lazy"
               allowFullScreen
               referrerPolicy="strict-origin-when-cross-origin"
