@@ -10,9 +10,21 @@ const MAPS_BROWSER_KEY = import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BRO
 const COMPANY_LOCATION = { lat: 12.9779875, lng: 80.0202656 };
 const COMPANY_ADDRESS = "X2HC+54R, Katrambakkam, Sriperumbudur, Tamil Nadu 602117, India";
 
-const mapEmbedUrl = MAPS_BROWSER_KEY
+// Keyless embed: renders the same pin from any origin, and never shows a key-authorization error.
+const keylessEmbedUrl = `https://maps.google.com/maps?q=${COMPANY_LOCATION.lat},${COMPANY_LOCATION.lng}&z=17&output=embed`;
+
+// Managed browser key is referrer-restricted to Lovable hosts; off those hosts Google renders
+// an "not authorized to use this API key" error inside the iframe, so we only use it when allowed.
+const keyedEmbedUrl = MAPS_BROWSER_KEY
   ? `https://www.google.com/maps/embed/v1/place?key=${MAPS_BROWSER_KEY}&q=${COMPANY_LOCATION.lat},${COMPANY_LOCATION.lng}&zoom=17`
-  : `https://maps.google.com/maps?q=${COMPANY_LOCATION.lat},${COMPANY_LOCATION.lng}&z=17&output=embed`;
+  : keylessEmbedUrl;
+const MAPS_AUTHORIZED_HOSTS = ["lovable.app", "lovableproject.com"];
+
+export const resolveMapEmbed = () => {
+  const host = typeof window === "undefined" ? "" : window.location.hostname;
+  const authorized = MAPS_AUTHORIZED_HOSTS.some((d) => host === d || host.endsWith(`.${d}`));
+  return authorized ? keyedEmbedUrl : keylessEmbedUrl;
+};
 
 const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${COMPANY_LOCATION.lat},${COMPANY_LOCATION.lng}&travelmode=driving`;
 
@@ -29,7 +41,8 @@ export const site = {
     whatsapp: "000000000000", // digits only, with country code
     email: "hello@example.com",
     hours: "Mon – Sat, 9:00 AM – 6:00 PM",
-    mapEmbed: mapEmbedUrl,
+    // Safe default for first paint; upgraded to the keyed Embed API on authorized hosts.
+    mapEmbed: keylessEmbedUrl,
     directions: directionsUrl,
   },
   social: [
