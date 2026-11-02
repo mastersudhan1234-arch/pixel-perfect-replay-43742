@@ -23,7 +23,7 @@ async function submitEnquiry(_data: Enquiry) {
 
 const field = "mt-1.5 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition focus:border-emerald focus:ring-2 focus:ring-ring/30";
 
-function Field({ label, children, error }: { name: keyof Enquiry; label: string; children: ReactNode; error?: string }) {
+function Field({ label, children, error }: { name: keyof Enquiry; label: string; children: ReactNode; error?: string | undefined }) {
   return (
     <label className="block text-sm font-semibold text-forest">
       {label}
