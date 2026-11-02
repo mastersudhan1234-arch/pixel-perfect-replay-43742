@@ -38,7 +38,7 @@ export function PageHeader({ eyebrow, title, text }: { eyebrow: string; title: s
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden text-forest-foreground">
-      <img src={hero} alt="Modern plastic recycling facility with extrusion machinery and recycled granules" width={1920} height={1088} className="absolute inset-0 -z-20 size-full object-cover" />
+      <img src={hero} alt="Blown-film extrusion machine producing transparent polyethylene film at the EcoPoly Industries plant" width={1920} height={1088} className="absolute inset-0 -z-20 size-full object-cover" />
       <div className="absolute inset-0 -z-10 bg-gradient-hero" />
       <div className="container-x flex min-h-[calc(100svh-5rem)] flex-col justify-center py-24">
         <div className="max-w-3xl animate-rise">
@@ -76,6 +76,7 @@ export function About() {
         <div>
           <SectionHead eyebrow="About EcoPoly" title="Turning used plastic into dependable material." text={`${site.name} focuses on plastic recycling, quality materials and reliable industrial supply — connecting collected plastic with the businesses that turn it into new products.`} />
           <Button asChild variant="forest" size="xl"><Link to="/about">More about us <ArrowRight /></Link></Button>
+          <img src={facility} alt="Wide view of the EcoPoly Industries recycling facility with conveyors, extrusion lines and sorted plastic bales" loading="lazy" width={1536} height={768} className="mt-10 aspect-[2/1] w-full rounded-3xl object-cover shadow-lift" />
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {aboutItems.map((a, i) => (
