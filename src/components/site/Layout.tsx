@@ -20,7 +20,7 @@ export function Logo({ light = false }: { light?: boolean }) {
         <Recycle className="size-5" />
       </span>
       <span className={`font-display text-lg font-extrabold ${light ? "text-forest-foreground" : "text-forest"}`}>
-        EcoPoly<span className="font-medium opacity-70"> Industries</span>
+        SRI KRISHNA<span className="font-medium opacity-70"> PLASTIC</span>
       </span>
     </Link>
   );
