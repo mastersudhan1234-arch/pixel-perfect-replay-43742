@@ -4,9 +4,9 @@ import { Industries, WhyUs, PageHeader } from "@/components/site/Sections";
 export const Route = createFileRoute("/industries")({
   head: () => ({
     meta: [
-      { title: "Industries We Serve — EcoPoly Industries" },
+      { title: "Industries We Serve — SRI KRISHNA PLASTIC" },
       { name: "description", content: "Plastic materials and packaging for manufacturers, packaging companies, retailers and industrial suppliers." },
-      { property: "og:title", content: "Industries We Serve — EcoPoly Industries" },
+      { property: "og:title", content: "Industries We Serve — SRI KRISHNA PLASTIC" },
       { property: "og:description", content: "Plastic materials and packaging for manufacturers, packaging companies, retailers and industrial suppliers." },
     ],
   }),

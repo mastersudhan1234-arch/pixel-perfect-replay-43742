@@ -29,10 +29,10 @@ export const resolveMapEmbed = () => {
 const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${COMPANY_LOCATION.lat},${COMPANY_LOCATION.lng}&travelmode=driving`;
 
 export const site = {
-  name: "EcoPoly Industries",
+  name: "SRI KRISHNA PLASTIC",
   tagline: "Plastic recycling, packaging & polymer materials",
   description:
-    "EcoPoly Industries supplies recycled plastic granules, carry bags, plastic covers and polymer raw materials for manufacturers and wholesalers.",
+    "SRI KRISHNA PLASTIC supplies recycled plastic granules, carry bags, plastic covers and polymer raw materials for manufacturers and wholesalers.",
   contact: {
     address: COMPANY_ADDRESS,
     addressLines: ["X2HC+54R", "Katrambakkam, Sriperumbudur", "Tamil Nadu 602117, India"],

@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 import { Contact, PageHeader, Quote } from "@/components/site/Sections";
 
-const t = "Contact & Request a Quote — EcoPoly Industries";
-const d = "Request a quote for recycled plastic granules, carry bags, covers or polymer raw materials. Call, email or WhatsApp EcoPoly Industries.";
+const t = "Contact & Request a Quote — SRI KRISHNA PLASTIC";
+const d = "Request a quote for recycled plastic granules, carry bags, covers or polymer raw materials. Call, email or WhatsApp SRI KRISHNA PLASTIC.";
 
 export const Route = createFileRoute("/contact")({
   validateSearch: z.object({ product: z.string().optional() }),

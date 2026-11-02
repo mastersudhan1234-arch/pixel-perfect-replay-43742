@@ -4,10 +4,10 @@ import { About, WhyUs, Facilities, PageHeader } from "@/components/site/Sections
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — EcoPoly Industries" },
-      { name: "description", content: "Learn about EcoPoly Industries: plastic recycling, quality materials and reliable industrial supply." },
-      { property: "og:title", content: "About Us — EcoPoly Industries" },
-      { property: "og:description", content: "Learn about EcoPoly Industries: plastic recycling, quality materials and reliable industrial supply." },
+      { title: "About Us — SRI KRISHNA PLASTIC" },
+      { name: "description", content: "Learn about SRI KRISHNA PLASTIC: plastic recycling, quality materials and reliable industrial supply." },
+      { property: "og:title", content: "About Us — SRI KRISHNA PLASTIC" },
+      { property: "og:description", content: "Learn about SRI KRISHNA PLASTIC: plastic recycling, quality materials and reliable industrial supply." },
     ],
   }),
   component: Page,
